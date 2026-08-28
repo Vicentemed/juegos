@@ -201,12 +201,27 @@ function comprobarCrucigrama(uid) {
                                   : `Llevas ${bien} de ${total} letras correctas. ¡Sigue así!`;
   fb.style.color = bien === total ? '#2e8b57' : '#0e7490';
 }
+const _rendirse = {};
 function resolverCrucigrama(uid) {
-  document.getElementById(uid).querySelectorAll('input[data-sol]').forEach(inp => {
-    inp.value = inp.dataset.sol;
-    inp.parentElement.classList.remove('error');
-    inp.parentElement.classList.add('bien');
-  });
+  const n = (_rendirse[uid] = (_rendirse[uid] || 0) + 1);
+  const j = document.getElementById(uid);
+  const fb = j.querySelector('.feedback');
+  const mensajes = [
+    '💪 Inténtalo de nuevo, ¡sé que puedes resolverlo sin ayuda!',
+    '🌟 ¡Vamos, no te rindas!',
+    '🔑 La tercera es la vencida... veamos cómo debe ser.',
+  ];
+  const msg = mensajes[Math.min(n, 3) - 1];
+  fb.textContent = msg;
+  fb.style.color = '#0e7490';
+  setTimeout(() => { if (fb.textContent === msg) fb.textContent = ''; }, 2000);
+  if (n >= 3) {
+    j.querySelectorAll('input[data-sol]').forEach(inp => {
+      inp.value = inp.dataset.sol;
+      inp.parentElement.classList.remove('error');
+      inp.parentElement.classList.add('bien');
+    });
+  }
 }
 </script>
 </body>
