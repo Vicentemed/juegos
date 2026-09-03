@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aging, Cellular Senescence, and Cancer</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: Georgia, 'Times New Roman', serif; background: #FFFDF7;
+         color: #1a1a1a; margin: 0; font-size: 20px; line-height: 1.65; }
+  main { max-width: 820px; margin: 0 auto; padding: 24px 18px 80px; }
+  h1 { color: #0e7490; font-size: 34px; text-align: center; line-height: 1.25; }
+  h2 { color: #0e7490; font-size: 26px; margin-top: 1.6em; }
+  .juego { background: #fff; border: 3px solid #0e7490; border-radius: 16px;
+           padding: 20px 18px; margin: 34px 0; }
+  .juego h2 { margin-top: 0; }
+  .instruccion { font-style: italic; color: #444; }
+  button { font-family: inherit; font-size: 19px; cursor: pointer; }
+  .chip { display: inline-block; margin: 6px; padding: 12px 20px; font-size: 20px;
+          border: 3px solid #888; border-radius: 999px; background: #fff; }
+  .chip.sel { border-color: #0e7490; background: #e0f2f7; font-weight: bold; }
+  .chip.ok { border-color: #2e8b57; background: #d9f2e3; font-weight: bold; }
+  .chip.mal { border-color: #c0392b; background: #fbdedb; }
+  .chip.falto { border-style: dashed; border-color: #2e8b57; }
+  .opcion { display: block; width: 100%; text-align: left; margin: 8px 0;
+            padding: 12px 16px; border: 3px solid #888; border-radius: 12px;
+            background: #fff; }
+  .opcion.sel { border-color: #0e7490; background: #e0f2f7; font-weight: bold; }
+  .opcion.ok { border-color: #2e8b57; background: #d9f2e3; font-weight: bold; }
+  .opcion.mal { border-color: #c0392b; background: #fbdedb; }
+  .comprobar { display: block; margin: 18px auto 0; padding: 14px 34px;
+               font-size: 21px; font-weight: bold; color: #fff; background: #0e7490;
+               border: none; border-radius: 12px; }
+  .comprobar:active { transform: scale(0.97); }
+  .feedback { text-align: center; font-size: 21px; font-weight: bold;
+              margin-top: 14px; min-height: 1.4em; }
+  .explica { background: #fdf6e3; border-left: 6px solid #e0a800; padding: 10px 14px;
+             margin-top: 10px; font-size: 18px; display: none; }
+  table.cruci { border-collapse: collapse; margin: 0 auto; }
+  table.cruci td { width: 44px; height: 44px; padding: 0; }
+  table.cruci td.celda { border: 2px solid #333; position: relative; background: #fff; }
+  table.cruci td.celda small { position: absolute; top: 1px; left: 3px; font-size: 11px;
+                               font-weight: bold; color: #0e7490; }
+  table.cruci input { width: 100%; height: 100%; border: none; text-align: center;
+                      font-size: 24px; font-weight: bold; text-transform: uppercase;
+                      background: transparent; font-family: inherit; }
+  table.cruci td.bien { background: #d9f2e3; }
+  table.cruci td.error { background: #fbdedb; }
+  table.cruci td.ayuda { background: #e0f2f7; }
+  table.cruci td.ayuda input { color: #0e7490; }
+  .tablero { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .carta { width: 118px; height: 118px; border: 3px solid #0e7490; border-radius: 14px;
+           background: #0e7490; color: #fff; font-size: 40px; font-weight: bold;
+           padding: 4px; }
+  .carta.rev { background: #fff; font-size: 52px; line-height: 1; }
+  .carta.ok { background: #d9f2e3; border-color: #2e8b57; color: #1c5c3c;
+              font-size: 40px; line-height: 1.05; }
+  .carta .cara small { display: block; font-size: 13px; font-weight: bold;
+                       margin-top: 4px; }
+  @media (max-width: 640px) { .carta { width: 30%; height: 100px; } }
+  .pistas { columns: 2; column-gap: 30px; font-size: 18px; }
+  .pistas h3 { color: #0e7490; }
+  @media (max-width: 640px) { .pistas { columns: 1; }
+    table.cruci td { width: 34px; height: 34px; }
+    table.cruci input { font-size: 19px; } }
+  .ref { font-size: 16px; color: #555; border-top: 2px solid #ddd;
+         margin-top: 2.2em; padding-top: 1em; }
+  .pie { text-align: center; color: #777; font-size: 16px; margin-top: 3em; }
+</style>
+</head>
+<body>
+<main>
+  <h1>🦷 Aging, Cellular Senescence, and Cancer</h1>
+  <p>Envejecimiento (aging), senescencia celular y cáncer.</p>
+<p>El término &quot;aging&quot; proviene del latín &quot;aetas&quot; que significa vejez, se refiere al proceso de envejecimiento, que es la acumulación de cambios a nivel molecular, celular y orgánico con el paso del tiempo. Este proceso natural influye en la salud y el riesgo de enfermedades crónicas, incluyendo el cáncer.</p>
+<h2>¿Qué es la senescencia celular?</h2>
+<p>La senescencia celular es un proceso en el que las células dejan de dividirse de manera indefinida. Esto sucede cuando las células experimentan daños en sus cromosomas (información genética) que no pueden reparar, como si una máquina deja de funcionar y ya no venden refacciones [1]. La senescencia celular es una respuesta a la presencia de daños genéticos que podrían llevar a la mutación y, por ende, al cáncer. Aunque se considera un mecanismo de supresión tumoral, también puede causar inflamación crónica.</p>
+<h2>¿Qué factores contribuyen al envejecimiento?</h2>
+<p>Según la teoría evolutiva, el envejecimiento se relaciona con la disminución de la selección natural con la edad. Es decir, genes que confieren beneficios tempranos en la vida pueden contribuir a debilidades en la edad adulta mayor [1]. Por ejemplo, la fuerza muscular y el sistema inmunológico se debilitan con el paso de los años, lo que aumenta el riesgo de enfermedades y accidentes.</p>
+<h2>¿Cómo se relaciona la senescencia celular con el cáncer?</h2>
+<p>La senescencia celular puede promover la inflamación crónica, que a su vez puede contribuir al desarrollo del cáncer. Esta inflamación crónica es como un fuego lento que, con el tiempo, puede dañar las células y sus tejidos, aumentando el riesgo de mutaciones que pueden llevar al cáncer [1]. Además, la senescencia celular también puede disminuir la funcionalidad de los órganos, lo que aumenta la posibilidad de enfermedades degenerativas.</p>
+<h2>¿Cómo se maneja la senescencia celular?</h2>
+<p>El manejo de la senescencia celular y el envejecimiento es un tema complejo y actualmente se estudia intensamente. Es importante acudir a su médico o dentista regularmente para realizar chequeos de salud y detectar problemas tempranos. No se tienen métodos específicos para prevenir la senescencia celular, pero sí se puede promover una buena salud a través de una dieta equilibrada, ejercicio regular, descanso adecuado y hábitos de vida saludables.</p>
+<section class="juego" id="tr1">
+  <h2>🧠 Trivia: ¿Sabes cómo el envejecimiento afecta tu salud?</h2>
+  <p class="instruccion">¡Jugemos y aprendamos sobre el envejecimiento y cómo cuidarlo! Vamos a desafiar nuestros conocimientos.</p>
+  
+  <div class="pregunta" data-num="1">
+    <p><b>1. Según el estudio, ¿cómo describe el envejecimiento en relación con la salud?</b></p>
+    <button class="opcion" data-ok="1" onclick="elegirOpcion(this)">Promueve patologías degenerativas y hiperplásicas.</button>
+<button class="opcion" data-ok="0" onclick="elegirOpcion(this)">Reduce la sensibilidad a la inflamación crónica.</button>
+<button class="opcion" data-ok="0" onclick="elegirOpcion(this)">Aumenta la selección natural con la edad.</button>
+    <div class="explica">💡 El envejecimiento se asocia con enfermedades degenerativas y hiperplásicas, lo que impacta directamente en nuestra salud con el tiempo.</div>
+  </div>
+  <div class="pregunta" data-num="2">
+    <p><b>2. ¿Qué papel juega la senescencia celular en la prevención del cáncer?</b></p>
+    <button class="opcion" data-ok="0" onclick="elegirOpcion(this)">No juega ningún papel.</button>
+<button class="opcion" data-ok="1" onclick="elegirOpcion(this)">Es un mecanismo de supresión tumoral.</button>
+<button class="opcion" data-ok="0" onclick="elegirOpcion(this)">Promueve el cáncer directamente.</button>
+    <div class="explica">💡 Aunque la senescencia celular se considera un mecanismo de supresión tumoral, puede también contribuir a la inflamación crónica, lo que puede ser dañino a largo plazo.</div>
+  </div>
+  <div class="pregunta" data-num="3">
+    <p><b>3. ¿Cómo se explica la disminución de la selección natural con la edad?</b></p>
+    <button class="opcion" data-ok="0" onclick="elegirOpcion(this)">Promueve patologías degenerativas y hiperplásicas.</button>
+<button class="opcion" data-ok="1" onclick="elegirOpcion(this)">Los genes que confieren beneficios tempranos pueden promover debilidad tardía.</button>
+<button class="opcion" data-ok="0" onclick="elegirOpcion(this)">Aumenta la longevidad de la especie.</button>
+    <div class="explica">💡 Según la teoría evolutiva, los genes que benefician a la especie en edades tempranas pueden resultar en debilidad en edades avanzadas.</div>
+  </div>
+  <div class="pregunta" data-num="4">
+    <p><b>4. ¿En qué medida aumentan las enfermedades degenerativas y el cáncer con el envejecimiento?</b></p>
+    <button class="opcion" data-ok="0" onclick="elegirOpcion(this)">No aumentan significativamente.</button>
+<button class="opcion" data-ok="1" onclick="elegirOpcion(this)">Aumentan de manera exponencial a partir de la mitad de la longevidad de la especie.</button>
+<button class="opcion" data-ok="0" onclick="elegirOpcion(this)">Disminuyen gradualmente con la edad.</button>
+    <div class="explica">💡 Las enfermedades degenerativas y el cáncer tienden a aumentar exponencialmente a partir de la mitad de la longevidad específica de la especie, lo que subraya la importancia del cuidado de la salud a medida que envejecemos.</div>
+  </div>
+  <button class="comprobar" onclick="comprobarTrivia('tr1')">✅ Comprobar respuestas</button>
+  <p class="feedback"></p>
+</section>
+<section class="juego" id="mem1">
+  <h2>🃏 Senescencia Celular y Envejecimiento</h2>
+  <p class="instruccion">Toca dos cartas para voltearlas y encuentra las
+  figuras iguales. Al hacer un par, descubrirás qué significa. ¡5
+  pares para ejercitar tu memoria!</p>
+  <div class="tablero"><button class="carta" data-par="3" data-palabra="SENESCENCIA" data-pista="Proceso de envejecimiento celular y sus consecuencias." data-emoji="💧" onclick="voltearCarta(this, 'mem1')"><span class="cara">?</span></button>
+<button class="carta" data-par="2" data-palabra="INFLAMACION" data-pista="Proceso de respuesta del cuerpo a daño o enfermedad." data-emoji="🔥" onclick="voltearCarta(this, 'mem1')"><span class="cara">?</span></button>
+<button class="carta" data-par="4" data-palabra="TUMORAL" data-pista="Conexión con el crecimiento no controlado de células." data-emoji="🩸" onclick="voltearCarta(this, 'mem1')"><span class="cara">?</span></button>
+<button class="carta" data-par="1" data-palabra="SENIL" data-pista="Asociado con el envejecimiento y sus efectos." data-emoji="👵" onclick="voltearCarta(this, 'mem1')"><span class="cara">?</span></button>
+<button class="carta" data-par="4" data-palabra="TUMORAL" data-pista="Conexión con el crecimiento no controlado de células." data-emoji="🩸" onclick="voltearCarta(this, 'mem1')"><span class="cara">?</span></button>
+<button class="carta" data-par="0" data-palabra="DENTAL" data-pista="Relacionado con el cuidado de los dientes y encías." data-emoji="🦷" onclick="voltearCarta(this, 'mem1')"><span class="cara">?</span></button>
+<button class="carta" data-par="0" data-palabra="DENTAL" data-pista="Relacionado con el cuidado de los dientes y encías." data-emoji="🦷" onclick="voltearCarta(this, 'mem1')"><span class="cara">?</span></button>
+<button class="carta" data-par="2" data-palabra="INFLAMACION" data-pista="Proceso de respuesta del cuerpo a daño o enfermedad." data-emoji="🔥" onclick="voltearCarta(this, 'mem1')"><span class="cara">?</span></button>
+<button class="carta" data-par="1" data-palabra="SENIL" data-pista="Asociado con el envejecimiento y sus efectos." data-emoji="👵" onclick="voltearCarta(this, 'mem1')"><span class="cara">?</span></button>
+<button class="carta" data-par="3" data-palabra="SENESCENCIA" data-pista="Proceso de envejecimiento celular y sus consecuencias." data-emoji="💧" onclick="voltearCarta(this, 'mem1')"><span class="cara">?</span></button></div>
+  <p class="feedback"></p>
+  <div class="explica"></div>
+</section>
+<section class="juego" id="cru1">
+  <h2>✏️ Senescencia y Envejecimiento</h2>
+  <p class="instruccion">Escribe una letra en cada casilla. Las letras azules
+  ya vienen puestas para ayudarte a empezar. Cuando termines, pulsa Comprobar:
+  las letras correctas se pintan de verde.</p>
+  <div style="overflow-x:auto;"><table class="cruci"><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="celda"><small>1</small><input maxlength="1" autocomplete="off" data-sol="S"></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td class="celda"><small>2</small><input maxlength="1" autocomplete="off" data-sol="D"></td><td></td><td></td><td></td><td></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="E"></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="E"></td><td></td><td></td><td></td><td></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="N"></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="G"></td><td></td><td class="celda"><small>3</small><input maxlength="1" autocomplete="off" data-sol="S"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="E"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="L"></td><td class="celda ayuda"><input maxlength="1" autocomplete="off" readonly value="E" data-sol="E"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="C"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="C"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="I"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="O"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="N"></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="E"></td><td></td><td></td><td></td><td></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="S"></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="N"></td><td></td><td></td><td></td><td></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="C"></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td class="celda"><small>4</small><input maxlength="1" autocomplete="off" data-sol="E"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="N"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="V"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="E"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="J"></td><td class="celda ayuda"><input maxlength="1" autocomplete="off" readonly value="E" data-sol="E"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="C"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="I"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="M"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="I"></td><td class="celda ayuda"><input maxlength="1" autocomplete="off" readonly value="E" data-sol="E"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="N"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="T"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="O"></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="R"></td><td></td><td></td><td></td><td></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="N"></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td class="celda"><small>5</small><input maxlength="1" autocomplete="off" data-sol="T"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="U"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="M"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="O"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="R"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="A"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="L"></td><td></td><td></td><td></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="C"></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="T"></td><td></td><td></td><td></td><td></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="I"></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td class="celda"><small>6</small><input maxlength="1" autocomplete="off" data-sol="L"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="O"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="N"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="G"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="E"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="V"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="I"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="D"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="A"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="D"></td><td></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="A"></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="V"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td class="celda"><small>7</small><input maxlength="1" autocomplete="off" data-sol="I"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="N"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="F"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="L"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="A"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="M"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="A"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="C"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="I"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="O"></td><td class="celda"><input maxlength="1" autocomplete="off" data-sol="N"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>
+  <div class="pistas">
+    <h3>➡️ Horizontales</h3><ul><li><b>3.</b> Según la &quot;&quot; natural, los genes más resistentes se promueven a la siguiente generación. <i>(9 letras)</i></li><li><b>4.</b> Fenómeno que aumenta la probabilidad de desarrollar patologías <i>(14 letras)</i></li><li><b>5.</b> Mecanismo relacionado con el crecimiento no controlado de células <i>(7 letras)</i></li><li><b>6.</b> Tiempo máximo de vida de una especie <i>(10 letras)</i></li><li><b>7.</b> Reacción del cuerpo que puede ser crónica <i>(11 letras)</i></li></ul>
+    <h3>⬇️ Verticales</h3><ul><li><b>1.</b> Proceso que conduce al declive funcional con la edad <i>(11 letras)</i></li><li><b>2.</b> Enfermedad relacionada con el declive funcional y el envejecimiento <i>(12 letras)</i></li></ul>
+  </div>
+  <button class="comprobar" onclick="comprobarCrucigrama('cru1')">✅ Comprobar</button>
+  <button class="comprobar" style="background:#888;"
+          onclick="resolverCrucigrama('cru1')">👀 Ver solución</button>
+  <p class="feedback"></p>
+</section>
+  <div class="ref">📖 Fuente: Judith Campisi (2013). Aging, Cellular Senescence, and Cancer. Annu Rev Physiol. https://doi.org/10.1146/annurev-physiol-030212-183653</div>
+  <p class="pie">Material de Divulgación Científica<br>
+  <b>PhD. Esparza-Villalpando Vicente</b><br><br>
+  Contenido educativo de divulgación. No reemplaza la consulta
+  con su dentista o médico.</p>
+</main>
+<script>
+function comprobarSeleccion(uid) {
+  const j = document.getElementById(uid);
+  let bien = 0, mal = 0, faltan = 0;
+  j.querySelectorAll('.chip').forEach(ch => {
+    ch.classList.remove('ok', 'mal', 'falto');
+    const ok = ch.dataset.ok === '1', sel = ch.classList.contains('sel');
+    if (sel && ok) { ch.classList.add('ok'); bien++; }
+    else if (sel && !ok) { ch.classList.add('mal'); mal++; }
+    else if (!sel && ok) { ch.classList.add('falto'); faltan++; }
+  });
+  const fb = j.querySelector('.feedback');
+  if (mal === 0 && faltan === 0) { fb.textContent = '🎉 ¡Excelente! Todas correctas.'; fb.style.color = '#2e8b57'; }
+  else { fb.textContent = `✅ ${bien} correctas · ❌ ${mal} de más · ⭕ ${faltan} por marcar (borde punteado)`; fb.style.color = '#c0392b'; }
+  j.querySelector('.explica').style.display = 'block';
+}
+function elegirOpcion(btn) {
+  btn.parentElement.querySelectorAll('.opcion').forEach(o => o.classList.remove('sel'));
+  btn.classList.add('sel');
+}
+function comprobarTrivia(uid) {
+  const j = document.getElementById(uid);
+  let bien = 0, total = 0;
+  j.querySelectorAll('.pregunta').forEach(p => {
+    total++;
+    p.querySelectorAll('.opcion').forEach(o => {
+      o.classList.remove('ok', 'mal');
+      const ok = o.dataset.ok === '1';
+      if (ok) o.classList.add('ok');
+      if (o.classList.contains('sel') && !ok) o.classList.add('mal');
+      if (o.classList.contains('sel') && ok) bien++;
+    });
+    p.querySelector('.explica').style.display = 'block';
+  });
+  const fb = j.querySelector('.feedback');
+  fb.textContent = `Resultado: ${bien} de ${total} 🎉 (la respuesta correcta quedó en verde)`;
+  fb.style.color = bien === total ? '#2e8b57' : '#0e7490';
+}
+const _memoria = {};
+function voltearCarta(btn, uid) {
+  const st = _memoria[uid] || (_memoria[uid] = {abiertas: [], bloqueo: false, intentos: 0, pares: 0});
+  if (st.bloqueo || btn.classList.contains('ok') || st.abiertas.includes(btn)) return;
+  btn.classList.add('rev');
+  btn.querySelector('.cara').textContent = btn.dataset.emoji;
+  st.abiertas.push(btn);
+  if (st.abiertas.length < 2) return;
+  st.intentos++;
+  const [a, b] = st.abiertas;
+  const j = document.getElementById(uid);
+  const fb = j.querySelector('.feedback');
+  const ex = j.querySelector('.explica');
+  const total = j.querySelectorAll('.carta').length / 2;
+  if (a.dataset.par === b.dataset.par) {
+    a.classList.add('ok'); b.classList.add('ok');
+    st.pares++; st.abiertas = [];
+    for (const c of [a, b]) {
+      const cara = c.querySelector('.cara');
+      cara.textContent = c.dataset.emoji;
+      const nombre = document.createElement('small');
+      nombre.textContent = c.dataset.palabra;
+      cara.appendChild(nombre);
+    }
+    ex.style.display = 'block';
+    ex.textContent = '💡 ' + a.dataset.emoji + ' ' + a.dataset.palabra + ': '
+                     + a.dataset.pista;
+    if (st.pares === total) {
+      fb.textContent = '🎉 ¡Memorama completo en ' + st.intentos + ' intentos! Excelente memoria.';
+      fb.style.color = '#2e8b57';
+    } else {
+      fb.textContent = '✅ ¡Par encontrado! Llevas ' + st.pares + ' de ' + total + ' pares (' + st.intentos + ' intentos).';
+      fb.style.color = '#0e7490';
+    }
+  } else {
+    st.bloqueo = true;
+    fb.textContent = 'No son iguales, ¡sigue intentando! Pares: ' + st.pares + ' de ' + total + '.';
+    fb.style.color = '#0e7490';
+    setTimeout(() => {
+      for (const c of [a, b]) { c.classList.remove('rev'); c.querySelector('.cara').textContent = '?'; }
+      st.abiertas = []; st.bloqueo = false;
+    }, 1100);
+  }
+}
+function comprobarCrucigrama(uid) {
+  const j = document.getElementById(uid);
+  let bien = 0, total = 0;
+  j.querySelectorAll('input[data-sol]').forEach(inp => {
+    total++;
+    inp.parentElement.classList.remove('bien', 'error');
+    const v = inp.value.trim().toUpperCase();
+    if (v === inp.dataset.sol) { inp.parentElement.classList.add('bien'); bien++; }
+    else if (v !== '') { inp.parentElement.classList.add('error'); }
+  });
+  const fb = j.querySelector('.feedback');
+  fb.textContent = bien === total ? '🎉 ¡Crucigrama completo! Felicidades.'
+                                  : `Llevas ${bien} de ${total} letras correctas. ¡Sigue así!`;
+  fb.style.color = bien === total ? '#2e8b57' : '#0e7490';
+}
+const _rendirse = {};
+function resolverCrucigrama(uid) {
+  const n = (_rendirse[uid] = (_rendirse[uid] || 0) + 1);
+  const j = document.getElementById(uid);
+  const fb = j.querySelector('.feedback');
+  const mensajes = [
+    '💪 Inténtalo de nuevo, ¡sé que puedes resolverlo sin ayuda!',
+    '🌟 ¡Vamos, no te rindas!',
+    '🔑 La tercera es la vencida... veamos cómo debe ser.',
+  ];
+  const msg = mensajes[Math.min(n, 3) - 1];
+  fb.textContent = msg;
+  fb.style.color = '#0e7490';
+  setTimeout(() => { if (fb.textContent === msg) fb.textContent = ''; }, 2000);
+  if (n >= 3) {
+    j.querySelectorAll('input[data-sol]').forEach(inp => {
+      inp.value = inp.dataset.sol;
+      inp.parentElement.classList.remove('error');
+      inp.parentElement.classList.add('bien');
+    });
+  }
+}
+</script>
+</body>
+</html>
